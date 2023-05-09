@@ -15,7 +15,7 @@ impl Find {
   pub(crate) fn run(self, options: Options) -> Result {
     let index = Index::open(&options)?;
 
-    index.update()?;
+    // index.update()?;
 
     match index.find(self.sat.0)? {
       Some(satpoint) => {

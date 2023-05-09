@@ -19,7 +19,7 @@ impl List {
   pub(crate) fn run(self, options: Options) -> Result {
     let index = Index::open(&options)?;
 
-    index.update()?;
+    // index.update()?;
 
     match index.list(self.outpoint)? {
       Some(crate::index::List::Unspent(ranges)) => {

@@ -7,7 +7,7 @@ pub struct Output {
 
 pub(crate) fn run(options: Options) -> Result {
   let index = Index::open(&options)?;
-  index.update()?;
+  // index.update()?;
 
   let inscription_outputs = index
     .get_inscriptions(None)?

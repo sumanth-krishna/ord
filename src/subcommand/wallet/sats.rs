@@ -26,7 +26,7 @@ pub struct OutputRare {
 impl Sats {
   pub(crate) fn run(&self, options: Options) -> Result {
     let index = Index::open(&options)?;
-    index.update()?;
+    // index.update()?;
 
     let utxos = index.get_unspent_output_ranges(Wallet::load(&options)?)?;
 

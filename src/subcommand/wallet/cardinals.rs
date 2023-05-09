@@ -8,7 +8,7 @@ pub struct Cardinal {
 
 pub(crate) fn run(options: Options) -> Result {
   let index = Index::open(&options)?;
-  index.update()?;
+  // index.update()?;
 
   let inscribed_utxos = index
     .get_inscriptions(None)?

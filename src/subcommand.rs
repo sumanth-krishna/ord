@@ -12,6 +12,10 @@ pub mod subsidy;
 pub mod supply;
 pub mod traits;
 pub mod wallet;
+pub mod giibs;
+pub mod giibsp;
+pub mod gioo;
+pub mod gie;
 
 fn print_json(output: impl Serialize) -> Result {
   serde_json::to_writer_pretty(io::stdout(), &output)?;
@@ -45,6 +49,14 @@ pub(crate) enum Subcommand {
   Traits(traits::Traits),
   #[clap(subcommand, about = "Wallet commands")]
   Wallet(wallet::Wallet),
+  #[clap(about = "Get inscription id by sat")]
+  Giibs(giibs::Giibs),
+  #[clap(about = "Get inscription id by satpoint")]
+  Giibsp(giibsp::Giibsp),
+  #[clap(about = "Get inscriptions on output")]
+  Gioo(gioo::Gioo),
+  #[clap(about = "Get inscriptions entry")]
+  Gie(gie::Gie),
 }
 
 impl Subcommand {
@@ -67,6 +79,10 @@ impl Subcommand {
       Self::Supply => supply::run(),
       Self::Traits(traits) => traits.run(),
       Self::Wallet(wallet) => wallet.run(options),
+      Self::Giibs(giibs) => giibs.run(options),
+      Self::Giibsp(giibsp) => giibsp.run(options),
+      Self::Gioo(gioo) => gioo.run(options),
+      Self::Gie(gie) => gie.run(options),
     }
   }
 }

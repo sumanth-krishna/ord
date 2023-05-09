@@ -17,7 +17,7 @@ pub struct TransactionsOutput {
 impl Info {
   pub(crate) fn run(self, options: Options) -> Result {
     let index = Index::open(&options)?;
-    index.update()?;
+    // index.update()?;
     let info = index.info()?;
 
     if self.transactions {

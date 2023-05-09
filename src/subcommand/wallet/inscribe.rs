@@ -57,7 +57,7 @@ impl Inscribe {
     let inscription = Inscription::from_file(options.chain(), &self.file)?;
 
     let index = Index::open(&options)?;
-    index.update()?;
+    // index.update()?;
 
     let client = options.bitcoin_rpc_client_for_wallet_command(false)?;
 
