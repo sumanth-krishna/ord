@@ -1,4 +1,5 @@
 use super::*;
+use base64::Engine;
 
 #[derive(Debug, Parser)]
 pub(crate) struct Gie {
