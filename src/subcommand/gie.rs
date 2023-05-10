@@ -45,7 +45,7 @@ impl Gie {
                 };
 
                 match inscription.into_body() {
-                    Some(body) => media_content = base64::encode(body),
+                    Some(body) => media_content = base64::engine::general_purpose::STANDARD.encode(body),
                     None => {}
                 };
             },
@@ -54,7 +54,7 @@ impl Gie {
 
         match index.get_inscription_entry(inscription_id)? {
             Some(entry) => {
-                print_json(Output { 
+                print_json(Output {
                     fee: entry.fee,
                     height: entry.height,
                     number: entry.number,

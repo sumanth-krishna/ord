@@ -796,6 +796,25 @@ impl Index {
     )
   }
 
+  pub(crate) fn get_inscription_id_by_satpoint(
+    &self,
+    satpoint: SatPoint,
+  ) -> Result<Option<InscriptionId>> {
+    let rtx = self.database.begin_read().unwrap();
+
+    let satpoint_to_inscription_id = rtx.open_table(SATPOINT_TO_INSCRIPTION_ID).unwrap();
+
+    let inscription_id = InscriptionId::load(
+        *satpoint_to_inscription_id
+        .get(&satpoint.store())
+        .unwrap()
+        .unwrap()
+        .value()
+        );
+
+    Ok(Some(inscription_id))
+  }
+
   #[cfg(test)]
   fn assert_inscription_location(
     &self,
