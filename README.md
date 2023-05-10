@@ -168,3 +168,38 @@ Release x.y.z
 - Update dependencies
 - Update database schema version
 ```
+
+<br/>
+
+Cake Special
+-------------
+
+On-fly indexing has been removed on functions below:
+
+- `find`
+- `info`
+- `list`
+- `wallet/balance`
+- `wallet/cardinals`
+- `wallet/inscribe`
+- `wallet/inscriptions`
+- `wallet/outputs`
+- `wallet/sats`
+- `wallet/send`
+
+Instead, there is a [daemon](https://github.com/cakespecial/ordinal-api) that will perform auto indexing every 5 minutes.
+
+<br/>
+
+New functions are introduced for API usage:
+
+- `giibs`: Get inscription id by sat
+- `giibsp`: Get inscription id by satpoint
+- `gioo`: Get inscriptions on output
+- `gie`: Get inscriptions entry
+
+
+Cake To-Do
+----------
+
+- Find a way how to handle reorg, at the moment snapshot creations are required.
